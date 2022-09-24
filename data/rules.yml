@@ -4,10 +4,10 @@ rules:
 
 - rule: Say goodbye anytime the user says goodbye
   steps:
-  - intent: goodbye
-  - action: utter_goodbye
+  - intent: bye
+  - action: utter_bye
 
-- rule: Say 'I am a bot' anytime the user challenges
+- rule: ask for rephrase when cannot understand what users express
   steps:
-  - intent: bot_challenge
-  - action: utter_iamabot
+  - intent: out_of_scope
+  - action: utter_confuse

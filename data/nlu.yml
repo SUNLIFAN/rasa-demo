@@ -7,85 +7,57 @@ nlu:
     - hello
     - hi
     - hello there
-    - good morning
-    - good evening
-    - moin
     - hey there
-    - let's go
     - hey dude
-    - goodmorning
-    - goodevening
+    - good morning
     - good afternoon
-
-- intent: goodbye
+    - good evening
+- intent: ask_for_recommend
   examples: |
-    - cu
-    - good by
-    - cee you later
-    - good night
-    - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
-
-- intent: affirm
-  examples: |
+    - are there any [Chinese](restaurant_type) restaurant?
+    - i want to eat [Chinese](restaurant_type) food
+    - let's go for [Italian](restaurant_type) food
+    - let's go for [Italian](restaurant_type) restaurant
+    - can you recommend a [American](restaurant_type) restaurant for me?
+    - find me some [Chinese](restaurant_type) restaurant.
+    - do you know some [Italian](restaurant_type) restaurant?
+    - i want to try [Chinese](restaurant_type) food.
+ - intent: confirm
+   examples: |
+    - ok, that's fine
+    - sounds good
+    - let's try it
+    - not bad, go ahead
+    - ok
+    - fine
+    - good
+    - go ahead
+    - okay
     - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
+    - sure
+ - intent: ask_for_other
+   examples: |
+    - are there any other option?
+    - what's else?
+    - i don't want to try this
+    - sounds not so appealing
+    - can you find me other restaurant?
+ - intent: inform_people_nums
+   examples: |
+   - table for [2](head_count)
+   - [2](head_count) people
+   - we have [2](head_count)
+   - reserve a table for [2](head_count) people for me
+   - [2](head_count) people will come
+ - intent: inform_time
+   examples: |
+   - we will come at [Tuesday](weekday) night at [18:00](time)
+   - [20:00](time) this [Friday](weekday) night
+   - [17:30](time) on [Monday](weekday) please
+ - intent: bye
+   examples: |
+   - bye for now
+   - bye
+   - see you
+   - that's all  
 
-- intent: deny
-  examples: |
-    - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
-
-- intent: mood_great
-  examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
-
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
-
-- intent: bot_challenge
-  examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
