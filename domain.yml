@@ -1,84 +1,75 @@
-version: "3.1"
-
+version: '3.1'
 intents:
-  - greet
-  - ask_for_recommend
-  - ask_for_other
-  - confirm
-  - inform_people_nums
-  - inform_time
-  - bye
-  - out_of_scope
-
+- ask_for_other
+- ask_for_recommend
+- bye
+- confirm
+- greet
+- inform_people_nums
+- inform_time
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
-  - text: "Hello! What can I do for you?"
-  - text: "Hey! How can I help you?"
-
+  - text: Hey! How are you?
+  - text: Hello! What can I do for you?
+  - text: Hey! How can I help you?
   utter_do_recommend:
-  - text: "How about {restaurant_name}?"
-  - text: "I hear that {restaurant_name} is awesome, do you want to try it?"
-  - text: "{restaurant_name} is good, wanna try it?"
-  - text: "I would recommend {restaurant_name}, do you want to try it?"
-
+  - text: How about {restaurant_name}?
+  - text: I hear that {restaurant_name} is awesome, do you want to try it?
+  - text: '{restaurant_name} is good, wanna try it?'
+  - text: I would recommend {restaurant_name}, do you want to try it?
   utter_quest_people_nums:
-  - text: "How many people will come?"
-  - text: "Table size you want to reserve for?"
-  - text: "Could you tell me the number of people that will come?"
-
+  - text: How many people will come?
+  - text: Table size you want to reserve for?
+  - text: Could you tell me the number of people that will come?
   utter_quest_time:
-  - text: "When will you come?"
-  - text: "Could you please tell me the time you want to reserve?"
-
+  - text: When will you come?
+  - text: Could you please tell me the time you want to reserve?
   utter_ok:
-  - text: "ok"
-  - text: "get it"
-
+  - text: ok
+  - text: get it
   utter_bye:
-  - text: "bye"
-  - text: "bye for now"
-  - text: "see you next time"
-
+  - text: bye
+  - text: bye for now
+  - text: see you next time
   utter_confuse:
-  - text: "I cannot understand what you say, could you say more clearly?"
-  - text: "I didn't get that, could you please rephrase and say again?"
-
-  utter_ask_for_confirm_table_size:
-  - text: "That's table for {table_size}, right?"
-  - text: "table for {table_size}, right?"
-
-  utter_ask_for_comfirm_time:
-  - text: "{reserve_time}, right?"
-
+  - text: I cannot understand what you say, could you say more clearly?
+  - text: I didn't get that, could you please rephrase and say again?
+  utter_confirm_for_all:
+  - text: So it's at {restaurant_name}, {reserve_time}, table for {table_size}, right?
+  utter_thanks:
+  - text: thanks for use this chatbot, bye for now!
 entities:
-  - restaurant_type
-  - head_count
-  - weekday
-  - time
-
+- restaurant_type
+- time
+- head_count
+- weekday
 slots:
   restaurant_name:
     type: text
-    influence_conversation: 
+    influence_conversation: false
     mappings:
     - type: custom
   table_size:
     type: text
-    influence_conversation:
+    influence_conversation: false
     mappings:
     - type: from_entity
       entity: head_count
   reserve_time:
     type: text
-    influence_conversation:
+    influence_conversation: false
     mappings:
     - type: custom
-
 actions:
-  - action_search_restaurant
-  - action_concat_reserve_time
-
+- action_concat_reserve_time
+- action_search_restaurant
+- utter_bye
+- utter_confirm_for_all
+- utter_do_recommend
+- utter_greet
+- utter_quest_people_nums
+- utter_quest_time
+- utter_thanks
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

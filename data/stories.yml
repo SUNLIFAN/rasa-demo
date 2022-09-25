@@ -2,29 +2,47 @@ version: "3.1"
 
 stories:
 
-- story: happy path
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
 
-- story: sad path 1
+- story: interactive_story_1
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
+  - intent: ask_for_recommend
+    entities:
+    - restaurant_type: Chinese
+  - action: action_search_restaurant
+  - slot_was_set:
+    - restaurant_name: CR1
+  - action: utter_do_recommend
+  - intent: confirm
+  - action: utter_quest_people_nums
+  - intent: inform_people_nums
+    entities:
+    - head_count: '5'
+  - slot_was_set:
+    - table_size: '5'
+  - action: utter_quest_time
+  - intent: inform_time
+    entities:
+    - time: 8:00
+    - weekday: Friday
+  - action: action_concat_reserve_time
+  - slot_was_set:
+    - reserve_time: Friday 8:00
+  - action: utter_confirm_for_all
+  - intent: confirm
+  - action: utter_thanks
 
-- story: sad path 2
+- story: sad path1
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
+  - intent: ask_for_recommend
+    entities:
+    - restaurant_type: american
+  - action: action_search_restaurant
+  - slot_was_set:
+    - restaurant_name: AR2
+  - action: utter_do_recommend
+  - intent: bye
+  - action: utter_bye

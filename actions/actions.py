@@ -40,23 +40,23 @@ restaurant_dict = {
 
 class ActionSearchRestaurant(Action):
 
-    def name(self) -> Text:
+    def name(self):
         return "action_search_restaurant"
     
-    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Ant]]:
-        restaurant_type = tracker.get_latest_entity_values("restaurant_type")[0].lower()
+    def run(self, dispatcher, tracker, domain):
+        restaurant_type = list(tracker.get_latest_entity_values("restaurant_type"))[0].lower()
         restaurant_names = restaurant_dict[restaurant_type]
         index = int(random.random() * len(restaurant_names))
         return [SlotSet("restaurant_name", restaurant_names[index])]
 
 class ActionSetTimeSlot(Action):
 
-    def name(self) -> Text:
+    def name(self):
         return "action_concat_reserve_time"
     
-    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        weekday = tracker.get_latest_entity_values("weekday")[0]
-        t = tracker.get_latest_entity_values("time")[0]
-        ans = week + ' ' + t
+    def run(self, dispatcher, tracker, domain):
+        weekday = list(tracker.get_latest_entity_values("weekday"))[0]
+        t = list(tracker.get_latest_entity_values("time"))[0]
+        ans = weekday + ' ' + t
         return [SlotSet("reserve_time", ans)]
 
