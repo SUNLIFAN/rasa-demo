@@ -38,6 +38,14 @@ restaurant_dict = {
     "japanese": ['JR1', 'JR2', 'JR3', 'JR4', 'JR5', 'JR6']
 }
 
+reverse_mapping = {
+    'CR': 'chinese',
+    'IR': 'italian',
+    'ER': 'english',
+    'AR': 'american',
+    'JR': 'japanese'
+}
+
 class ActionSearchRestaurant(Action):
 
     def name(self):
@@ -59,4 +67,20 @@ class ActionSetTimeSlot(Action):
         t = list(tracker.get_latest_entity_values("time"))[0]
         ans = weekday + ' ' + t
         return [SlotSet("reserve_time", ans)]
+
+class ActionSearchOther(Action):
+
+    def name(self):
+        return "action_search_other"
+
+    def run(self, dispatcher, tracker, domain):
+        last_recommend = tracker.get_slot('restaurant_name')
+        prefix = last_recommend[0:2]
+        restaurant_type = reverse_mapping[prefix]
+        restaurant_names = restaurant_dict[restaurant_type]
+        length = len(restaurant_names)
+        index = int(random.random() * length)
+        while index >= length or restaurant_names[index] == last_recommend:
+            index = int(random.random() * length)
+        return [SlotSet("restaurant_name", restaurant_names[index])]
 

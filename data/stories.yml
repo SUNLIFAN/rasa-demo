@@ -3,7 +3,7 @@ version: "3.1"
 stories:
 
 
-- story: interactive_story_1
+- story: recommend_once_accept
   steps:
   - intent: greet
   - action: utter_greet
@@ -46,3 +46,38 @@ stories:
   - action: utter_do_recommend
   - intent: bye
   - action: utter_bye
+
+- story: recommend_deny_recommend_accpet
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_for_recommend
+    entities:
+    - restaurant_type: italian
+  - action: action_search_restaurant
+  - slot_was_set:
+    - restaurant_name: IR2
+  - action: utter_do_recommend
+  - intent: deny
+  - action: action_search_other
+  - slot_was_set:
+    - restaurant_name: IR4
+  - action: utter_recommend_others
+  - intent: confirm
+  - action: utter_quest_people_nums
+  - intent: inform_people_nums
+    entities:
+    - head_count: '3'
+  - slot_was_set:
+    - table_size: '3'
+  - action: utter_quest_time
+  - intent: inform_time
+    entities:
+    - time: 17:00
+    - weekday: Tuesday
+  - action: action_concat_reserve_time
+  - slot_was_set:
+    - reserve_time: Tuesday 17:00
+  - action: utter_confirm_for_all
+  - intent: confirm
+  - action: utter_thanks

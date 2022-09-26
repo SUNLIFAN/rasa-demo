@@ -23,6 +23,8 @@ nlu:
     - i want to try [Chinese](restaurant_type) food.
     - I want [Chinese](restaurant_type) food
     - I want [american](restaurant_type) food
+    - i want [american](restaurant_type) food
+    - I want [italian](restaurant_type) food
 - intent: confirm
   examples: |
     - yes
@@ -34,6 +36,7 @@ nlu:
     - that's fine
     - fine
     - sure, i want to try it
+    - that's right
 - intent: ask_for_other
   examples: |
     - are there any other option?
@@ -51,6 +54,7 @@ nlu:
     - [4](head_count)
     - table for [5](head_count) please
     - table for [5](head_count) people please
+    - table for [3](head_count) please
 - intent: inform_time
   examples: |
     - we will come at [Tuesday](weekday) night at [18:00](time)
@@ -59,9 +63,24 @@ nlu:
     - [7:00](time) this [Friday](weekday) night
     - [19:00](time) on [Tuesday](weekday) night
     - [8:00](time), on the morning of [Friday](weekday)
+    - [17:00](time) this [Tuesday](weekday) night
 - intent: bye
   examples: |
     - bye for now
     - bye
     - see you
     - that's all
+- intent: deny
+  examples: |
+    - no, thanks
+    - that sounds not so good
+    - that's not satisfactory
+    - sounds boring
+    - I don't like that
+    - I don't like it
+    - not really
+    - i don't like it, can you recommend me other restaurant?
+    - can you recommend me others?
+    - do i have other options?
+    - what about other restaurants?
+    - are there any other restaurant?

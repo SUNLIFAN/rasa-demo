@@ -4,6 +4,7 @@ intents:
 - ask_for_recommend
 - bye
 - confirm
+- deny
 - greet
 - inform_people_nums
 - inform_time
@@ -38,11 +39,15 @@ responses:
   - text: So it's at {restaurant_name}, {reserve_time}, table for {table_size}, right?
   utter_thanks:
   - text: thanks for use this chatbot, bye for now!
+  utter_recommend_others:
+  - text: The {restaurant_name} is also good, wanna try?
+  - text: Then what about {restaurant_name}?
+  - text: I would also recommend {restaurant_name}
 entities:
 - restaurant_type
-- time
-- head_count
 - weekday
+- head_count
+- time
 slots:
   restaurant_name:
     type: text
@@ -62,6 +67,7 @@ slots:
     - type: custom
 actions:
 - action_concat_reserve_time
+- action_search_other
 - action_search_restaurant
 - utter_bye
 - utter_confirm_for_all
@@ -69,6 +75,7 @@ actions:
 - utter_greet
 - utter_quest_people_nums
 - utter_quest_time
+- utter_recommend_others
 - utter_thanks
 session_config:
   session_expiration_time: 60
